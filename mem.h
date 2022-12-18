@@ -59,7 +59,7 @@ namespace mem {
 	}
 
 	template<typename T>
-	T ReadChain(uintptr_t base, std::vector<unsigned int> offsets) {
+	T ReadChain(uintptr_t base, std::vector<uintptr_t> offsets) {
 		uintptr_t address = base;
 		for (unsigned int i = 0; i < offsets.size(); i++) {
 			address = RPM<uintptr_t>(address);
