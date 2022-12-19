@@ -67,4 +67,14 @@ namespace mem {
 		}
 		return RPM<T>(address);
 	}
+	
+	template<typename T>
+	void WriteChain(uintptr_t base, std::vector<uintptr_t> offsets, T buffer) {
+		uintptr_t address = base;
+		for (unsigned int i = 0; i < offsets.size(); i++) {
+			address = RPM<uintptr_t>(address);
+			address += offsets[i];
+		}
+		WPM<T>(address, buffer);
+	}
 }
